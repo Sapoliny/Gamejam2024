@@ -39,9 +39,12 @@ public class Boss1 : MonoBehaviour
             case 2:
                 StartCoroutine(Attack2());
                 break;
+<<<<<<< Updated upstream
             case 3:
                 StartCoroutine(Attack3());
                 break;
+=======
+>>>>>>> Stashed changes
             default:
                 break;
         }
@@ -83,6 +86,7 @@ public class Boss1 : MonoBehaviour
 
     IEnumerator Attack2()
     {
+<<<<<<< Updated upstream
         List<GameObject> bullets;
         GameObject newBullet;
 
@@ -168,3 +172,8 @@ public class Boss1 : MonoBehaviour
         waitingToEnd = true;
     }
 }
+=======
+        yield return null;
+    }
+}
+>>>>>>> Stashed changes
