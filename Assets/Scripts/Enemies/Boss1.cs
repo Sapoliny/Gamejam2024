@@ -27,12 +27,14 @@ public class Boss1 : MonoBehaviour
 
     void StartAttackState() //CHAMADO POR UM SENDMESSAGE DO GAMEMANAGER
     {
-        int choice = Random.Range(1, 1 + 1); // 3 +1 depois
+        int choice = Random.Range(1, 2 + 1); 
         switch (choice)
         {
             case 1:
                 StartCoroutine(Attack1());
                 break;
+            case 2:
+                StartCoroutine(Attack2());
             default:
                 break;
         }
@@ -71,4 +73,7 @@ public class Boss1 : MonoBehaviour
 
         waitingToEnd = true;
     }
-}
+
+    IEnumerator Attack2()
+    {
+    }

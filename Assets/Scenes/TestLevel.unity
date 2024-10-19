@@ -1941,6 +1941,7 @@ GameObject:
   - component: {fileID: 1585491076}
   - component: {fileID: 1585491075}
   - component: {fileID: 1585491077}
+  - component: {fileID: 1585491078}
   m_Layer: 0
   m_Name: Boss
   m_TagString: Untagged
@@ -2029,6 +2030,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet1: {fileID: 7073069227294081688, guid: 6d4ddce443ec936afa824946b0d2c623, type: 3}
   gameManager: {fileID: 1830242419}
+--- !u!114 &1585491078
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1585491074}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d60a9bf2e55fde9428a0496c5ec590db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 200
+  bossHealth: 0
 --- !u!1 &1609696326
 GameObject:
   m_ObjectHideFlags: 0
@@ -2192,8 +2207,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1830242421}
-  - component: {fileID: 1830242420}
   - component: {fileID: 1830242422}
+  - component: {fileID: 1830242423}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -2201,24 +2216,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1830242420
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1830242419}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b8648e7be2de1b6409a44caff4eddb45, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 721498009}
-  boss: {fileID: 1585491074}
-  dialogueText: {fileID: 721120560}
-  typingSpeed: 0.05
-  isAttacking: 0
-  isDefending: 0
 --- !u!4 &1830242421
 Transform:
   m_ObjectHideFlags: 0
@@ -2247,6 +2244,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogue: "P: Test, hello\r\nB: No, no hellos\r"
+--- !u!114 &1830242423
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1830242419}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8648e7be2de1b6409a44caff4eddb45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 721498009}
+  boss: {fileID: 1585491074}
+  dialogueText: {fileID: 721120560}
+  typingSpeed: 0.05
+  isAttacking: 0
+  isDefending: 0
 --- !u!1 &1966073762
 GameObject:
   m_ObjectHideFlags: 0
