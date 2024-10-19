@@ -99,4 +99,12 @@ public class Bullet : MonoBehaviour
         this.transform.Rotate(new Vector3(0, 0, angle));
 
     }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Background")
+        {
+            Destroy(gameObject);
+        }
+    }
 }

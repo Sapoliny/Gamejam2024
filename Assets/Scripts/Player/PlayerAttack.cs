@@ -8,6 +8,7 @@ public class PlayerAttack : MonoBehaviour
     public GameObject attackSelectionMenu;
     public GameObject gameManager;
     public GameObject boss;
+    public GameObject attackMark;
 
     bool isAttacking;
     int currentAttackID = 0;
@@ -31,9 +32,32 @@ public class PlayerAttack : MonoBehaviour
 
     void StartAttackState() //CHAMADA PELO SENDMESSAGE DO GAMEMANAGER
     {
-        attackSelectionMenu.SetActive(true);
+        StartCoroutine(GetInPosition());
     }
 
+    IEnumerator GetInPosition()
+    {
+        
+        float xVelocity = Math.Min(maxVelocity, goBackX - transform.position.x);
+        rb.velocity = new Vector2(xVelocity, xVelocity / (goBackX - transform.position.x) * (0 - transform.position.y));
+        if (transform.position.x > goBackX)
+        {
+            while (goBackX - transform.position.x < 0)
+            {
+                yield return new WaitForFixedUpdate();
+            }
+        }
+        else
+        {
+            while (goBackX - transform.position.x > 0)
+            {
+                yield return new WaitForFixedUpdate();
+            }
+        }
+        rb.velocity = new Vector2(0, 0);
+        transform.position = new Vector2(goBackX, 0);
+        attackSelectionMenu.SetActive(true);
+    }
     void EndAttack()
     {     
         gameManager.SendMessage("playerAttackEnd");
@@ -56,6 +80,7 @@ public class PlayerAttack : MonoBehaviour
 
     IEnumerator Attack1()
     {
+        GetComponent<BoxCollider2D>().enabled = false;
         //Ir para posição de ataque
         float xVelocity = Math.Min(maxVelocity, (boss.transform.position.x - xOffSet - transform.position.x));
         rb.velocity = new Vector2(xVelocity, xVelocity / (boss.transform.position.x - xOffSet - transform.position.x) * (boss.transform.position.y - transform.position.y));
@@ -68,7 +93,17 @@ public class PlayerAttack : MonoBehaviour
 
 
         /// O ATAQUE EM SI
-        yield return new WaitForSeconds(3f);
+        GameObject mark;
+        mark = Instantiate(attackMark);
+        mark.transform.position = transform.position;
+        yield return new WaitForSeconds(1f);
+        mark = Instantiate(attackMark);
+        mark.transform.position = transform.position;
+        yield return new WaitForSeconds(1f);
+        mark = Instantiate(attackMark);
+        mark.transform.position = transform.position;
+        yield return new WaitForSeconds(1f);
+
 
 
         //Voltar
@@ -81,6 +116,7 @@ public class PlayerAttack : MonoBehaviour
         rb.velocity = new Vector2(0, 0);
         transform.position = new Vector2(goBackX, 0);
 
+        GetComponent<BoxCollider2D>().enabled = true;
         EndAttack();
     }
 }
