@@ -6,7 +6,6 @@ using System;
 public class AttackMark : MonoBehaviour
 {
     float defaultScale;
-    bool halfwayFlag = false;
     public float n; //numero de vezes que cresce
     public float baseDamage = 10;
     float time = -1;

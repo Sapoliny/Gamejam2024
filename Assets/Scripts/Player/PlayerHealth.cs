@@ -19,6 +19,7 @@ public class PlayerHealth : MonoBehaviour
     void Start()
     {
         playerHealth = maxHealth;
+        healthUI.text = playerHealth.ToString();
     }
 
     // Update is called once per frame
