@@ -28,6 +28,8 @@ public class BackgroundMusic : MonoBehaviour //cortesia do chatgpt (nao é que is
         {
             Debug.LogError("No AudioSource component found on the GameObject.");
         }
+
+        PlayAudioById(0);
     }
 
     void Update()

@@ -37,9 +37,23 @@ public class PlayerAttack : MonoBehaviour
 
     IEnumerator GetInPosition()
     {
-        
-        float xVelocity = Math.Min(maxVelocity, goBackX - transform.position.x);
-        rb.velocity = new Vector2(xVelocity, xVelocity / (goBackX - transform.position.x) * (0 - transform.position.y));
+        float xDifference = goBackX - transform.position.x;
+
+        // Ensure there's a non-zero difference to prevent division by zero
+        if (xDifference != 0)
+        {
+            float xVelocity = Math.Min(maxVelocity, xDifference);
+            float yDifference = 0 - transform.position.y;
+
+            // Avoid division by zero by ensuring xDifference is not zero
+            rb.velocity = new Vector2(xVelocity, (xVelocity / xDifference) * yDifference);
+        }
+        else
+        {
+            // If xDifference is 0, simply stop the player's movement
+            rb.velocity = new Vector2(0, 0);
+        }
+
         if (transform.position.x > goBackX)
         {
             while (goBackX - transform.position.x < 0)
@@ -54,6 +68,7 @@ public class PlayerAttack : MonoBehaviour
                 yield return new WaitForFixedUpdate();
             }
         }
+
         rb.velocity = new Vector2(0, 0);
         transform.position = new Vector2(goBackX, 0);
         attackSelectionMenu.SetActive(true);
