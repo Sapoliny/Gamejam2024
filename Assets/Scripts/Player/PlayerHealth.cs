@@ -10,7 +10,7 @@ public class PlayerHealth : MonoBehaviour
     public float maxHealth;
     public GameObject healthBar;
     public TextMeshProUGUI healthUI;
-    bool isDead;
+    public GameObject gameOver;
 
     [Header("nao mexer")]
     public float playerHealth;
@@ -36,9 +36,18 @@ public class PlayerHealth : MonoBehaviour
         if (playerHealth <= 0)
         {
             playerHealth = 0;
-            isDead = true;
-            //SceneManager.LoadScene("xD");
+            StartCoroutine(waitToDie());
         }
         
+    }
+
+
+    IEnumerator waitToDie()
+    {
+        gameOver.SetActive(true);
+        Destroy(GetComponent<PlayerAttack>());
+        Destroy(GetComponent<PlayerControl>());
+        yield return new WaitForSeconds(5);
+        SceneManager.LoadScene("MainMenu");
     }
 }

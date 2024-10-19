@@ -17,6 +17,11 @@ public class Boss1 : MonoBehaviour
     {
 
     }
+    
+    void StopSelf() //CHAMADA POR SENDMESSAGE DO BOSSHEALTH
+    {
+        Destroy(GetComponent<Boss1>());
+    }
 
     // Update is called once per frame
     void FixedUpdate()
@@ -147,12 +152,13 @@ public class Boss1 : MonoBehaviour
         }
 
 
-        Vector3 nearPlayer = new Vector3(player.transform.position.x, player.transform.position.y + Random.Range(-1f, 1f),0);
+        Vector3 nearPlayer;
 
         bullets = bullets.OrderBy(b => Random.value).ToList(); //Shuffle à lista
 
         foreach (GameObject i in bullets)
         {
+            nearPlayer = new Vector3(player.transform.position.x, player.transform.position.y + Random.Range(-2f, 2f), 0);
             Vector3 direction = (nearPlayer - i.transform.position).normalized;
 
             // Rotate the bullet to face the mark

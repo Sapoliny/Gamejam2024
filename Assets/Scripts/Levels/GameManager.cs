@@ -54,7 +54,7 @@ public class GameManagerTest : MonoBehaviour
                 case state.PlayerAttack:
                     break;
                 case state.BossAttack:
-                    player.SendMessage("StopDefenseState");
+                    player.SendMessage("StopDefenseState", SendMessageOptions.DontRequireReceiver);
                     break;
                 default:
                     break;
@@ -70,11 +70,11 @@ public class GameManagerTest : MonoBehaviour
                     break;
                 case state.PlayerAttack:
                     isAttacking = true;
-                    player.SendMessage("StartAttackState");
+                    player.SendMessage("StartAttackState", SendMessageOptions.DontRequireReceiver);
                     break;
                 case state.BossAttack:
                     isDefending = true;
-                    player.SendMessage("StartDefenseState");
+                    player.SendMessage("StartDefenseState", SendMessageOptions.DontRequireReceiver);
                     boss.SendMessage("StartAttackState");
                     break;
             }

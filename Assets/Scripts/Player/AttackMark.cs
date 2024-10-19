@@ -31,7 +31,7 @@ public class AttackMark : MonoBehaviour
 
         if(Input.GetKey(KeyCode.Mouse0))
         {
-            float damage = baseDamage * (transform.localScale.x / (defaultScale * n));
+            float damage = baseDamage * (0.2f + 0.8f * ((transform.localScale.x - defaultScale) / (defaultScale * (n-1))));
             boss.GetComponent<BossHealth>().getHurt(damage);
             Destroy(gameObject);
         }
