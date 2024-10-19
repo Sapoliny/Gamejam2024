@@ -56,6 +56,7 @@ public class Boss1 : MonoBehaviour
                     newBullet.transform.position = transform.position;
                     newBullet.GetComponent<Rigidbody2D>().velocity = new Vector2(0, i);
                     newBullet.transform.SetParent(transform);
+                    //newBullet.GetComponent<Bullet>().attackToDeflected = attackDeflected.None;
                     bullets.Add(newBullet);
                 }
             }
