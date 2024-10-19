@@ -60,9 +60,8 @@ public class Shooter : MonoBehaviour
 
     GameObject getRandomPrefab() 
     { 
-        int maxIndex = bulletPrefabs.Length - 1;
+        int maxIndex = bulletPrefabs.Length;
         int index = Random.Range(0, maxIndex);
-        Debug.Log(index);
         return bulletPrefabs[index];
     }
 }
