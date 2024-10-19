@@ -26,7 +26,7 @@ public class PlayerControl : MonoBehaviour
     bool minCharge = false;
     bool triedToRelease = false;
 
-    bool isAllowed = true;
+    public bool isAllowed;
 
     // Start is called before the first frame update
     void Start()
