@@ -522,6 +522,7 @@ GameObject:
   - component: {fileID: 418054560}
   - component: {fileID: 418054562}
   - component: {fileID: 418054563}
+  - component: {fileID: 418054564}
   m_Layer: 0
   m_Name: Boss
   m_TagString: Boss
@@ -624,6 +625,7 @@ MonoBehaviour:
   exitScreen: {fileID: 1947156082}
   movementSpeedExit: 20
   movementSpeed: 10
+  swipeDamage: 25
 --- !u!114 &418054563
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -637,7 +639,54 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
+  healthBar: {fileID: 1055551528}
+  healthUI: {fileID: 0}
   bossHealth: 0
+--- !u!61 &418054564
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 418054559}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 20.48, y: 20.48}
+    newSize: {x: 20.48, y: 20.48}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 20.48, y: 20.48}
+  m_EdgeRadius: 0
 --- !u!114 &446765969 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6804663410732873909, guid: da06ac42db385449c8115920b89b91a0, type: 3}

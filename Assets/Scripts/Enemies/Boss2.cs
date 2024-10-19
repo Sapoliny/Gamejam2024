@@ -16,13 +16,15 @@ public class Boss2 : MonoBehaviour
     public float movementSpeedExit;
     public float movementSpeed;
 
+    public float swipeDamage;
+
     bool waitingToEnd = false;
 
     // Start is called before the first frame update
     void Start()
     {
         defaultPosition = this.transform.position;
-        
+
     }
 
     // Update is called once per frame
@@ -30,6 +32,7 @@ public class Boss2 : MonoBehaviour
     {
 
     }
+
     void StartAttackState() //CHAMADO POR UM SENDMESSAGE DO GAMEMANAGER
     {
         int choice = UnityEngine.Random.Range(1, 2 + 1);
@@ -116,5 +119,17 @@ public class Boss2 : MonoBehaviour
         this.transform.position = defaultPosition;
         waitingToEnd = true;
 
+    }
+
+    void OnTriggerEnter2D(Collider2D collider2D)
+    {
+        if (collider2D.gameObject.tag == "Player")
+        {
+            collider2D.gameObject.GetComponent<PlayerHealth>().getHurt(swipeDamage);
+        }
+        else if (collider2D.gameObject.GetComponent<Bullet>() != null)
+        {
+            this.gameObject.GetComponent<BossHealth>().getHurt(collider2D.gameObject.GetComponent<Bullet>().damage);
+        }
     }
 }

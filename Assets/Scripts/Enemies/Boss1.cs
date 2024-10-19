@@ -39,12 +39,9 @@ public class Boss1 : MonoBehaviour
             case 2:
                 StartCoroutine(Attack2());
                 break;
-<<<<<<< Updated upstream
             case 3:
                 StartCoroutine(Attack3());
                 break;
-=======
->>>>>>> Stashed changes
             default:
                 break;
         }
@@ -86,7 +83,6 @@ public class Boss1 : MonoBehaviour
 
     IEnumerator Attack2()
     {
-<<<<<<< Updated upstream
         List<GameObject> bullets;
         GameObject newBullet;
 
@@ -153,7 +149,7 @@ public class Boss1 : MonoBehaviour
 
         Vector3 nearPlayer = new Vector3(player.transform.position.x, player.transform.position.y + Random.Range(-1f, 1f),0);
 
-        bullets = bullets.OrderBy(b => Random.value).ToList(); //Shuffle à lista
+        bullets = bullets.OrderBy(b => Random.value).ToList(); //Shuffle ï¿½ lista
 
         foreach (GameObject i in bullets)
         {
@@ -172,8 +168,3 @@ public class Boss1 : MonoBehaviour
         waitingToEnd = true;
     }
 }
-=======
-        yield return null;
-    }
-}
->>>>>>> Stashed changes
