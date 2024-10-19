@@ -18,6 +18,7 @@ public class PlayerControl : MonoBehaviour
     public float Yvelocity;
     float Xmovement;
     float Ymovement;
+    private Rigidbody2D rb2d;
 
     public GameObject sword1;
     public GameObject sword2;
@@ -26,12 +27,12 @@ public class PlayerControl : MonoBehaviour
     bool minCharge = false;
     bool triedToRelease = false;
 
-    public bool isAllowed; //BOOL GLOBAL DE TODO O SCRIPT
-
+    bool isAllowed = true; //BOOL GLOBAL DE TODO O SCRIPT
+    
     // Start is called before the first frame update
     void Start()
     {
-        
+        rb2d = this.gameObject.GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -63,10 +64,11 @@ public class PlayerControl : MonoBehaviour
 
     void Move()
     {
-        Xmovement = Input.GetAxisRaw("Horizontal") * Xvelocity * Time.deltaTime;
-        Ymovement = Input.GetAxisRaw("Vertical") * Yvelocity * Time.deltaTime; ;
+        Xmovement = Input.GetAxisRaw("Horizontal") * Xvelocity;
+        Ymovement = Input.GetAxisRaw("Vertical") * Yvelocity; 
 
-        transform.position = new Vector2(transform.position.x + Xmovement, transform.position.y + Ymovement);
+        rb2d.velocity = new Vector2(Xmovement, Ymovement);
+        
     }
 
     void Attack()
