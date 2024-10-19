@@ -27,7 +27,7 @@ public class PlayerControl : MonoBehaviour
     bool minCharge = false;
     bool triedToRelease = false;
 
-    bool isAllowed = true; //BOOL GLOBAL DE TODO O SCRIPT
+    bool isAllowed = false; //BOOL GLOBAL DE TODO O SCRIPT
     
     // Start is called before the first frame update
     void Start()

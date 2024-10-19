@@ -16,6 +16,7 @@ public class GameManagerTest : MonoBehaviour
     state? lastState = null;
 
     public GameObject player;
+    public GameObject boss;
 
     // DIALOGUE
 
@@ -69,10 +70,12 @@ public class GameManagerTest : MonoBehaviour
                     break;
                 case state.PlayerAttack:
                     isAttacking = true;
+                    player.SendMessage("StartAttackState");
                     break;
                 case state.BossAttack:
                     isDefending = true;
                     player.SendMessage("StartDefenseState");
+                    boss.SendMessage("StartAttackState");
                     break;
             }
         }
@@ -90,7 +93,9 @@ public class GameManagerTest : MonoBehaviour
                     }
                     else
                     {
-                        currentState = state.BossAttack;
+                        //currentState = state.BossAttack;
+                        currentState = state.PlayerAttack;
+
                         if (typingCoroutine != null)
                         {
                             StopCoroutine(typingCoroutine); 
@@ -136,7 +141,7 @@ public class GameManagerTest : MonoBehaviour
         }
 
         // Update TextMeshPro with the current line of dialogue
-        dialogueText.text = currentLine.Substring(2).Trim();
+        currentLine = currentLine.Substring(2).Trim();
 
         typingCoroutine = StartCoroutine(TypeLine(currentLine));
 
@@ -157,5 +162,10 @@ public class GameManagerTest : MonoBehaviour
     void playerAttackEnd() //CHAMADA POR SENDMESSAGE PELO PLAYERATTACK
     {
         isAttacking = false;
+    }
+
+    void bossAttackEnd() //CHAMADA POR SENDMESSAGE PELO PLAYERATTACK
+    {
+        isDefending = false;
     }
 }
