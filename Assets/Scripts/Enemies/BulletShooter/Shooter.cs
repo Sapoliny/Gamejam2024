@@ -41,7 +41,7 @@ public class Shooter : MonoBehaviour
         {
             angle *= -1;
         }
-        Debug.Log(angle);
+        //Debug.Log(angle);
 
         GameObject bullet = Instantiate(getRandomPrefab(), this.transform.position, Quaternion.Euler(0, 0, angle));
 
@@ -61,6 +61,8 @@ public class Shooter : MonoBehaviour
     GameObject getRandomPrefab() 
     { 
         int maxIndex = bulletPrefabs.Length - 1;
-        return bulletPrefabs[Random.Range(0, maxIndex)];
+        int index = Random.Range(0, maxIndex);
+        Debug.Log(index);
+        return bulletPrefabs[index];
     }
 }
