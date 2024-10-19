@@ -17,6 +17,8 @@ public class GameManagerTest : MonoBehaviour
 
     public GameObject player;
 
+    // DIALOGUE
+
     string dialogue;
     public TextMeshPro dialogueText;
     string[] dialogueLines; // To store the lines of dialogue
@@ -24,6 +26,12 @@ public class GameManagerTest : MonoBehaviour
     public float typingSpeed = 0.05f; // Speed of the typing effect
     Coroutine typingCoroutine; // To keep track of the typing coroutine
 
+    [Header("NAO MEXER")]
+    //PLAYER ATTACK
+    public bool isAttacking = false;
+
+    //BOSS ATTACK
+    public bool isDefending = false;
 
     // Start is called before the first frame update
     void Start()
@@ -45,7 +53,7 @@ public class GameManagerTest : MonoBehaviour
                 case state.PlayerAttack:
                     break;
                 case state.BossAttack:
-                    player.SendMessage("StopDefense");
+                    player.SendMessage("StopDefenseState");
                     break;
                 default:
                     break;
@@ -60,9 +68,11 @@ public class GameManagerTest : MonoBehaviour
                     }
                     break;
                 case state.PlayerAttack:
+                    isAttacking = true;
                     break;
                 case state.BossAttack:
-                    player.SendMessage("StartDefense");
+                    isDefending = true;
+                    player.SendMessage("StartDefenseState");
                     break;
             }
         }
@@ -90,8 +100,16 @@ public class GameManagerTest : MonoBehaviour
                 }
                 break;
             case state.PlayerAttack:
+                if (isAttacking == false) //ALTERADO EXTERIORMENTE PELO PLAYERATTACK
+                {
+                    currentState = state.BossAttack;
+                }
                 break;
             case state.BossAttack:
+                if (isDefending == false) //ALTERADO EXTERIORMENTE PELO BOSS
+                {
+                    currentState = state.PlayerAttack;
+                }
                 break;
         }
     }
@@ -136,4 +154,8 @@ public class GameManagerTest : MonoBehaviour
         }
     }
 
+    void playerAttackEnd() //CHAMADA POR SENDMESSAGE PELO PLAYERATTACK
+    {
+        isAttacking = false;
+    }
 }
