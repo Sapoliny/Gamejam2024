@@ -100,8 +100,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 5
-  bulletTime: 999
-  attackToDeflected: 0
+  bulletTime: 15
+  attackToDeflected: 2
+  goToBoss: 0
+  bossTransform: {fileID: 0}
 --- !u!50 &289047963073919082
 Rigidbody2D:
   serializedVersion: 4
