@@ -27,9 +27,8 @@ public class PlayerControl : MonoBehaviour
     bool minCharge = false;
     bool triedToRelease = false;
 
-    bool isAllowed = true;
+    bool isAllowed = true; //BOOL GLOBAL DE TODO O SCRIPT
     
-
     // Start is called before the first frame update
     void Start()
     {
@@ -46,12 +45,12 @@ public class PlayerControl : MonoBehaviour
         }    
     }
 
-    void StartDefense() //CHAMADA PELO SENDMESSAGE DO GAMEMANAGER
+    void StartDefenseState() //CHAMADA PELO SENDMESSAGE DO GAMEMANAGER
     {
         isAllowed = true;
     }
 
-    void StopDefense()  //CHAMADA PELO SENDMESSAGE DO GAMEMANAGER
+    void StopDefenseState()  //CHAMADA PELO SENDMESSAGE DO GAMEMANAGER
     { //HARD RESET
         isAllowed = false;
         StopAllCoroutines();
