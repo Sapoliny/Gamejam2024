@@ -6,7 +6,19 @@ public class MenuSelectButton : MonoBehaviour
 {
     public void Press()
     {
-        transform.parent.parent.GetChild(0).gameObject.SetActive(false);
-        transform.parent.parent.GetChild(1).gameObject.SetActive(true);
+        Transform dad = transform.parent;
+        Transform grandpa = transform.parent.parent;
+
+        dad.GetChild(0).gameObject.SetActive(false);
+        dad.GetChild(1).gameObject.SetActive(true);
+
+        
+        for (int i = 0; i < grandpa.childCount;i++)
+        {
+            if (grandpa.GetChild(i) != dad)
+            {
+                grandpa.GetChild(i).gameObject.SetActive(false);
+            }
+        }
     }
 }
