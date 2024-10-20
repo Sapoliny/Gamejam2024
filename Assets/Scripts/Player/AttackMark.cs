@@ -10,10 +10,12 @@ public class AttackMark : MonoBehaviour
     public float baseDamage = 10;
     float time = -1;
     GameObject boss;
+    GameObject player;
 
     // Start is called before the first frame update
     void Start()
     {
+        player = GameObject.Find("Player");
         defaultScale = transform.localScale.x; //scale: x = y
         boss = GameObject.Find("Boss");
     }
@@ -31,6 +33,7 @@ public class AttackMark : MonoBehaviour
 
         if(Input.GetKey(KeyCode.Mouse0))
         {
+            player.SendMessage("Strike1");
             float damage = baseDamage * (0.2f + 0.8f * ((transform.localScale.x - defaultScale) / (defaultScale * (n-1))));
             boss.GetComponent<BossHealth>().getHurt(damage);
             Destroy(gameObject);

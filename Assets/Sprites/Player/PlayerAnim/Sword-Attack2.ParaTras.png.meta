@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 0789620a01f8343479904c6b2971a25f
+guid: 7349293602a2dd34fa363cba2e559a89
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -72,7 +72,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -110,13 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Death_0
+      name: Sword-Attack2.ParaTras_0
       rect:
         serializedVersion: 2
-        x: 17
-        y: 1
-        width: 27
-        height: 48
+        x: 0
+        y: 0
+        width: 640
+        height: 640
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,20 +124,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c224a9dc786442847814c0df1d3f15a9
-      internalID: -2077703735
+      spriteID: c8808e4cb6213f24b9c95e4de7771e21
+      internalID: -1986291538
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Death_1
+      name: Sword-Attack2.ParaTras_1
       rect:
         serializedVersion: 2
-        x: 76
-        y: 2
-        width: 36
-        height: 39
+        x: 640
+        y: 0
+        width: 640
+        height: 640
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -145,20 +145,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 812da3855ea5dca45890f276ca0409f5
-      internalID: -1328827488
+      spriteID: ade8faf3c8ffa1e4a8043703586aec72
+      internalID: 1053573017
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Death_2
+      name: Sword-Attack2.ParaTras_2
       rect:
         serializedVersion: 2
-        x: 140
-        y: 2
-        width: 42
-        height: 31
+        x: 1280
+        y: 0
+        width: 640
+        height: 640
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,20 +166,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 66f7ce6cb8b93194d95846f8920aeb34
-      internalID: 1056068709
+      spriteID: 1c337ec6b7ad52640b188820fab70d32
+      internalID: 1883794457
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Death_3
+      name: Sword-Attack2.ParaTras_3
       rect:
         serializedVersion: 2
-        x: 199
-        y: 2
-        width: 55
-        height: 15
+        x: 1920
+        y: 0
+        width: 640
+        height: 640
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -187,8 +187,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d4afd476fd59f31499d78da4258d4858
-      internalID: 821459369
+      spriteID: 206757fcac46b38459c20c01ca884ec7
+      internalID: 1709277805
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sword-Attack2.ParaTras_4
+      rect:
+        serializedVersion: 2
+        x: 2560
+        y: 0
+        width: 640
+        height: 640
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab3ff64432bdfbe4da2494d8c3ef552c
+      internalID: 805992268
       vertices: []
       indices: 
       edges: []
@@ -204,10 +225,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Death_0: -2077703735
-      Death_1: -1328827488
-      Death_2: 1056068709
-      Death_3: 821459369
+      Sword-Attack2.ParaTras_0: -1986291538
+      Sword-Attack2.ParaTras_1: 1053573017
+      Sword-Attack2.ParaTras_2: 1883794457
+      Sword-Attack2.ParaTras_3: 1709277805
+      Sword-Attack2.ParaTras_4: 805992268
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

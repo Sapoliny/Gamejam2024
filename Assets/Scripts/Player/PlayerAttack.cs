@@ -109,15 +109,12 @@ public class PlayerAttack : MonoBehaviour
 
         /// O ATAQUE EM SI
         GameObject mark;
-        mark = Instantiate(attackMark);
-        mark.transform.position = transform.position;
-        yield return new WaitForSeconds(1f);
-        mark = Instantiate(attackMark);
-        mark.transform.position = transform.position;
-        yield return new WaitForSeconds(1f);
-        mark = Instantiate(attackMark);
-        mark.transform.position = transform.position;
-        yield return new WaitForSeconds(1f);
+        for (int i = 0; i<3; i++)
+        {
+            mark = Instantiate(attackMark);
+            mark.transform.position = new Vector2(transform.position.x + 0.3f, transform.position.y - 0.3f);
+            yield return new WaitForSeconds(1f);
+        }
 
 
 

@@ -37,6 +37,7 @@ public class PlayerHealth : MonoBehaviour
         {
             playerHealth = 0;
             StartCoroutine(waitToDie());
+            GetComponent<Animator>().SetBool("isDead", true);
         }
         
     }

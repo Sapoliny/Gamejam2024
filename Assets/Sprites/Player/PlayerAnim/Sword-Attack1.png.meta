@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 0789620a01f8343479904c6b2971a25f
+guid: 99e120e9c74d3a7439b90fce4d204076
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -72,7 +72,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -110,85 +110,127 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Death_0
+      name: Sword-Attack1_0
       rect:
         serializedVersion: 2
-        x: 17
-        y: 1
-        width: 27
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 268
+        y: 265
+        width: 103
+        height: 304
+      alignment: 9
+      pivot: {x: 0.4999997, y: 0.18066949}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c224a9dc786442847814c0df1d3f15a9
-      internalID: -2077703735
+      spriteID: 18bd6a9c3d79d4244bb53fa84af90bcc
+      internalID: 44511726
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Death_1
+      name: Sword-Attack1_1
       rect:
         serializedVersion: 2
-        x: 76
-        y: 2
-        width: 36
-        height: 39
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 915
+        y: 274
+        width: 227
+        height: 229
+      alignment: 9
+      pivot: {x: 0.17557582, y: 0.19302727}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 812da3855ea5dca45890f276ca0409f5
-      internalID: -1328827488
+      spriteID: 5c462430a260ef845918d3d627440aef
+      internalID: -1365698304
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Death_2
+      name: Sword-Attack1_2
       rect:
         serializedVersion: 2
-        x: 140
-        y: 2
-        width: 42
-        height: 31
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 1545
+        y: 285
+        width: 289
+        height: 145
+      alignment: 9
+      pivot: {x: 0.18146956, y: 0.23451138}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 66f7ce6cb8b93194d95846f8920aeb34
-      internalID: 1056068709
+      spriteID: 1175a6f93a965a947833e9be3c593a7c
+      internalID: -1299136082
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Death_3
+      name: Sword-Attack1_3
       rect:
         serializedVersion: 2
-        x: 199
-        y: 2
-        width: 55
-        height: 15
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 2186
+        y: 268
+        width: 302
+        height: 104
+      alignment: 9
+      pivot: {x: 0.1785541, y: 0.4839067}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d4afd476fd59f31499d78da4258d4858
-      internalID: 821459369
+      spriteID: d64d889d8b7ac954197013803963ff6f
+      internalID: -1485630865
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sword-Attack1_4
+      rect:
+        serializedVersion: 2
+        x: 2826
+        y: 210
+        width: 287
+        height: 147
+      alignment: 9
+      pivot: {x: 0.17341726, y: 0.7504908}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2241a2c3712df0343b360ffdfb87068e
+      internalID: 1826182157
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sword-Attack1_5
+      rect:
+        serializedVersion: 2
+        x: 3474
+        y: 137
+        width: 229
+        height: 229
+      alignment: 9
+      pivot: {x: 0.19302568, y: 0.79966384}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e165e951359d8b2438e92de771cc002d
+      internalID: -1060812099
       vertices: []
       indices: 
       edges: []
@@ -204,10 +246,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Death_0: -2077703735
-      Death_1: -1328827488
-      Death_2: 1056068709
-      Death_3: 821459369
+      Sword-Attack1_0: 44511726
+      Sword-Attack1_1: -1365698304
+      Sword-Attack1_2: -1299136082
+      Sword-Attack1_3: -1485630865
+      Sword-Attack1_4: 1826182157
+      Sword-Attack1_5: -1060812099
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
