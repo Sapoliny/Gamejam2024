@@ -41,13 +41,13 @@ public class Boss2 : MonoBehaviour
 
     void StartAttackState() //CHAMADO POR UM SENDMESSAGE DO GAMEMANAGER
     {
-        int choice = UnityEngine.Random.Range(1, 2 + 1);
+        int choice = UnityEngine.Random.Range(0, 2);
         switch (choice)
         {
-            case 1:
-                StartCoroutine(attack1());
+            case 0:
+                StartCoroutine(attack1());  
                 break;
-            case 2:
+            case 1:
                 StartCoroutine(attack2());
                 break;
             default:
@@ -77,6 +77,7 @@ public class Boss2 : MonoBehaviour
         {
             Destroy(shooters[i]);
         }
+        yield return new WaitForSeconds(2);
         shooters.Clear();
         waitingToEnd = true;
     }
@@ -84,7 +85,7 @@ public class Boss2 : MonoBehaviour
         IEnumerator attack2()
         {
             while (true)
-            {
+            {   
                 this.transform.position = Vector2.MoveTowards(this.transform.position, exitScreen.position, movementSpeedExit * Time.deltaTime);
                 if (Vector2.Distance(this.transform.position, exitScreen.position) < 0.1f)
                 {
