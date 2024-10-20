@@ -120,6 +120,8 @@ public class Boss1 : MonoBehaviour
 
             // Set the bullet's velocity towards the mark
             i.GetComponent<Rigidbody2D>().velocity = direction * 10f;
+
+            i.transform.localScale = new Vector2(i.transform.localScale.x * -1, i.transform.localScale.y); //Era isto ou rodar 180graus
         }
 
         Destroy(bulletMark);
@@ -167,6 +169,8 @@ public class Boss1 : MonoBehaviour
 
             // Set the bullet's velocity towards the mark
             i.GetComponent<Rigidbody2D>().velocity = direction * 10f;
+
+            i.transform.localScale = new Vector2(i.transform.localScale.x * -1, i.transform.localScale.y); //Era isto ou rodar 180graus
 
             yield return new WaitForSeconds(0.25f);
         }

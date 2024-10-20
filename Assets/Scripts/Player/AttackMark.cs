@@ -12,6 +12,10 @@ public class AttackMark : MonoBehaviour
     GameObject boss;
     GameObject player;
 
+    public GameObject badIndicator;
+    public GameObject goodIndicator;
+    public GameObject perfectIndicator;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -35,6 +39,21 @@ public class AttackMark : MonoBehaviour
         {
             player.SendMessage("Strike1");
             float damage = baseDamage * (0.2f + 0.8f * ((transform.localScale.x - defaultScale) / (defaultScale * (n-1))));
+            GameObject indicator;
+            if (damage / baseDamage > 0.85f)
+            {
+                indicator = Instantiate(perfectIndicator);
+            }
+            else if (damage / baseDamage > 0.45f)
+            {
+                indicator = Instantiate(goodIndicator);
+            }
+            else
+            {
+                indicator = Instantiate(badIndicator);
+            }
+            indicator.GetComponent<DamageIndicator>().Show(damage,transform);
+
             boss.GetComponent<BossHealth>().getHurt(damage);
             Destroy(gameObject);
         }

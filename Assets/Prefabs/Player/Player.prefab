@@ -287,6 +287,7 @@ MonoBehaviour:
   healthBar: {fileID: 0}
   healthUI: {fileID: 0}
   gameOver: {fileID: 0}
+  playerDamageIndicator: {fileID: 3152109958451332769, guid: 631cd3ce5429493408e26a75fb221b4e, type: 3}
   playerHealth: 0
 --- !u!114 &3373494652447073875
 MonoBehaviour:
