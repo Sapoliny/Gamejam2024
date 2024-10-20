@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEditor;
 using UnityEditor.Callbacks;
 using UnityEngine;
 
@@ -9,12 +11,14 @@ public enum attackDeflected
     Attack2,
     None,
 }
-    
+
 public class Bullet : MonoBehaviour
 {
 
 
     public float damage;
+    [HideInInspector]
+    public float speed;
 
     [Tooltip("Bullet till bullet disapears")]
     public float bulletTime;
@@ -23,13 +27,14 @@ public class Bullet : MonoBehaviour
     [Tooltip("If delflected go to boss")]
     public bool goToBoss;
 
-    public Transform bossTransform;
+    private Transform bossTransform;
 
     private Rigidbody2D rb2D;
     // Start is called before the first frame update
     void Start()
     {
         rb2D = this.gameObject.GetComponent<Rigidbody2D>();
+        bossTransform = GameObject.FindGameObjectWithTag("Boss").GetComponent<Transform>();
     }
 
     // Update is called once per frame
@@ -49,6 +54,11 @@ public class Bullet : MonoBehaviour
             coll.gameObject.GetComponent<PlayerHealth>().getHurt(damage);
             Destroy(this.gameObject);
         }
+        else if (coll.gameObject.tag == "Boss")
+        {
+            coll.gameObject.GetComponent<BossHealth>().getHurt(damage/5);
+            Destroy(this.gameObject);
+        }
     }
 
     void Sword1()
@@ -66,8 +76,8 @@ public class Bullet : MonoBehaviour
             {
                 angle *= -1;
             }
-            rb2D.velocity = direction.normalized;
-            transform.rotation = Quaternion.Euler(0,0, angle);
+            rb2D.velocity = direction.normalized * speed;
+            transform.rotation = Quaternion.Euler(0, 0, angle);
         }
         else
         {
@@ -78,7 +88,7 @@ public class Bullet : MonoBehaviour
                 angle *= -1;
             }
             rb2D.velocity = direction;
-            transform.rotation = Quaternion.Euler(0,0,angle);
+            transform.rotation = Quaternion.Euler(0, 0, angle);
         }
     }
 
