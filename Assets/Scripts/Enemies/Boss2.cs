@@ -22,6 +22,7 @@ public class Boss2 : MonoBehaviour
     public float movementSpeed;
 
     public float swipeDamage;
+    public float rotationSpeed;
 
 
     bool waitingToEnd = false;
@@ -137,8 +138,10 @@ public class Boss2 : MonoBehaviour
     bool MovePos(Vector3 target, float moveSpeed)
     {
         this.transform.position =  Vector2.MoveTowards(this.transform.position, target, moveSpeed);
+        this.transform.Rotate(new Vector3(0,0, rotationSpeed * Time.deltaTime));
         if (Vector2.Distance(this.transform.position, target) < 0.1f)
-        {
+        {       
+            this.transform.rotation = Quaternion.identity;
             return false;
         }
         return true;
