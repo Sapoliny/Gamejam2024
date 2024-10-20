@@ -13,6 +13,10 @@ public class PlayerHealth : MonoBehaviour
     public GameObject gameOver;
     public GameObject playerDamageIndicator;
 
+    public AudioClip damageSound; // The sound to play when the player takes damage
+    private AudioSource audioSource; // The AudioSource component
+    GameObject bg;
+
     [Header("nao mexer")]
     public float playerHealth;
 
@@ -21,6 +25,8 @@ public class PlayerHealth : MonoBehaviour
     {
         playerHealth = maxHealth;
         healthUI.text = playerHealth.ToString();
+        audioSource = GetComponent<AudioSource>();
+        bg = GameObject.Find("BackgroundMusic");
     }
 
     // Update is called once per frame
@@ -31,6 +37,8 @@ public class PlayerHealth : MonoBehaviour
 
     public void getHurt(float damage) 
     {
+        DamageSound();
+
         playerHealth -= damage;
         healthBar.GetComponent<Slider>().value = playerHealth / maxHealth;
         healthUI.text = playerHealth.ToString();
@@ -41,10 +49,18 @@ public class PlayerHealth : MonoBehaviour
         if (playerHealth <= 0)
         {
             playerHealth = 0;
+            healthBar.GetComponent<Slider>().value = playerHealth / maxHealth;
+            healthUI.text = playerHealth.ToString();
             StartCoroutine(waitToDie());
             GetComponent<Animator>().SetBool("isDead", true);
         }
         
+    }
+
+    void DamageSound()
+    {
+        audioSource.volume = bg.GetComponent<AudioSource>().volume;
+        audioSource.PlayOneShot(damageSound);
     }
 
 

@@ -172,7 +172,7 @@ public class Boss1 : MonoBehaviour
 
             i.transform.localScale = new Vector2(i.transform.localScale.x * -1, i.transform.localScale.y); //Era isto ou rodar 180graus
 
-            yield return new WaitForSeconds(0.25f);
+            yield return new WaitForSeconds(0.3f);
         }
 
         waitingToEnd = true;
