@@ -149,7 +149,7 @@ public class Boss1 : MonoBehaviour
 
         Vector3 nearPlayer = new Vector3(player.transform.position.x, player.transform.position.y + Random.Range(-1f, 1f),0);
 
-        bullets = bullets.OrderBy(b => Random.value).ToList(); //Shuffle à lista
+        bullets = bullets.OrderBy(b => Random.value).ToList(); //Shuffle ï¿½ lista
 
         foreach (GameObject i in bullets)
         {
