@@ -13,7 +13,7 @@ public class LegsFollowPlayer : MonoBehaviour
     }
     void Update()
     {
-        transform.position = new Vector2(player.transform.position.x, player.transform.position.y - 0.8f);
+        transform.position = new Vector2(player.transform.position.x + 0.075f, player.transform.position.y - 0.75f);
 
         if (player.GetComponent<Rigidbody2D>().velocity != new Vector2(0,0))
         {

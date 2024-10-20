@@ -11,6 +11,7 @@ public class PlayerHealth : MonoBehaviour
     public GameObject healthBar;
     public TextMeshProUGUI healthUI;
     public GameObject gameOver;
+    public GameObject playerDamageIndicator;
 
     [Header("nao mexer")]
     public float playerHealth;

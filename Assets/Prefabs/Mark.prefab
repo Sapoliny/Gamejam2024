@@ -99,3 +99,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   n: 4
   baseDamage: 10
+  badIndicator: {fileID: 3152109958451332769, guid: f8e15422687dc594fbf4723a79fdc8fe, type: 3}
+  goodIndicator: {fileID: 3152109958451332769, guid: 5ad066964c23272409ee4842675b5476, type: 3}
+  perfectIndicator: {fileID: 3152109958451332769, guid: 581828f184dc51b48a63f50307a85d29, type: 3}
