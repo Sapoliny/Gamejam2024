@@ -27,12 +27,18 @@ public class GameManagerTest : MonoBehaviour
     public float typingSpeed = 0.05f; // Speed of the typing effect
     Coroutine typingCoroutine; // To keep track of the typing coroutine
 
+    [Header("So é preciso com hints = on")]
+    public GameObject blinkingMouse;
+    public GameObject blinkingWASD;
+
+
     [Header("NAO MEXER")]
     //PLAYER ATTACK
     public bool isAttacking = false;
 
     //BOSS ATTACK
     public bool isDefending = false;
+
 
     // Start is called before the first frame update
     void Start()
@@ -50,10 +56,19 @@ public class GameManagerTest : MonoBehaviour
             switch (lastState) //O que acontece ao sair de um estado
             {
                 case state.Dialogue:
+                    if (PlayerPrefs.GetInt("Hints", 1) == 1)
+                    {
+                        blinkingMouse.SetActive(false);
+                    }
                     break;
                 case state.PlayerAttack:
                     break;
                 case state.BossAttack:
+                    if (PlayerPrefs.GetInt("Hints", 1) == 1)
+                    {
+                        blinkingMouse.SetActive(false);
+                        blinkingWASD.SetActive(false);
+                    }
                     player.SendMessage("StopDefenseState", SendMessageOptions.DontRequireReceiver);
                     break;
                 default:
@@ -63,6 +78,10 @@ public class GameManagerTest : MonoBehaviour
             switch (currentState) //O que acontece ao entrar num estado
             {
                 case state.Dialogue:
+                    if (PlayerPrefs.GetInt("Hints",1) == 1)
+                    {
+                        blinkingMouse.SetActive(true);
+                    }
                     if (dialogueLines.Length > 0)
                     {
                         ShowNextLine();
@@ -73,6 +92,11 @@ public class GameManagerTest : MonoBehaviour
                     player.SendMessage("StartAttackState", SendMessageOptions.DontRequireReceiver);
                     break;
                 case state.BossAttack:
+                    if (PlayerPrefs.GetInt("Hints", 1) == 1)
+                    {
+                        blinkingMouse.SetActive(true);
+                        blinkingWASD.SetActive(true);
+                    }
                     isDefending = true;
                     player.SendMessage("StartDefenseState", SendMessageOptions.DontRequireReceiver);
                     boss.SendMessage("StartAttackState");
@@ -85,7 +109,7 @@ public class GameManagerTest : MonoBehaviour
         switch (currentState) //O que acontece ao estar num estado
         {
             case state.Dialogue:
-                if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Mouse1)) // Press Space to advance the dialogue
+                if (Input.GetKeyDown(KeyCode.Mouse0))
                 {
                     if (currentLineIndex < dialogueLines.Length)
                     {

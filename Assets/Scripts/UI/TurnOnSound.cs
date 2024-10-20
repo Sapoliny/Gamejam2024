@@ -9,7 +9,7 @@ public class TurnOnSound : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (PlayerPrefs.GetInt("Muted", 0) == 0)
+        if (PlayerPrefs.GetInt("Muted", 1) == 0)
         {
             gameObject.SetActive(false);
         }

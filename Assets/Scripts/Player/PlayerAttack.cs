@@ -9,6 +9,7 @@ public class PlayerAttack : MonoBehaviour
     public GameObject gameManager;
     public GameObject boss;
     public GameObject attackMark;
+    public GameObject blinkingMouse;
 
     bool isAttacking;
     int currentAttackID = 0;
@@ -106,6 +107,12 @@ public class PlayerAttack : MonoBehaviour
         rb.velocity = new Vector2(0,0);
         transform.position = new Vector2(boss.transform.position.x - xOffSet, boss.transform.position.y);
 
+        if (PlayerPrefs.GetInt("Hints", 1) == 1)
+        {
+            print("Ola");
+            blinkingMouse.SetActive(true);
+        }
+
 
         /// O ATAQUE EM SI
         GameObject mark;
@@ -114,6 +121,11 @@ public class PlayerAttack : MonoBehaviour
             mark = Instantiate(attackMark);
             mark.transform.position = new Vector2(transform.position.x + 0.3f, transform.position.y - 0.3f);
             yield return new WaitForSeconds(1f);
+        }
+
+        if (PlayerPrefs.GetInt("Hints", 1) == 1)
+        {
+            blinkingMouse.SetActive(false);
         }
 
 
