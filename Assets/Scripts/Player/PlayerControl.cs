@@ -12,20 +12,24 @@ enum Attacks
 
 public class PlayerControl : MonoBehaviour
 {
-
-    
+  
     public float Xvelocity;
     public float Yvelocity;
     float Xmovement;
     float Ymovement;
     private Rigidbody2D rb2d;
 
+    public float attackCooldown = 0.3f;
     public GameObject sword1;
     public GameObject sword2;
+    public GameObject swordObject;
+    Animator swordAnim;
 
     Attacks currentAttack;
     bool minCharge = false;
     bool triedToRelease = false;
+
+    Animator anim;
 
     bool isAllowed = false; //BOOL GLOBAL DE TODO O SCRIPT
     
@@ -33,6 +37,8 @@ public class PlayerControl : MonoBehaviour
     void Start()
     {
         rb2d = this.gameObject.GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
+        swordAnim = swordObject.GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -54,6 +60,13 @@ public class PlayerControl : MonoBehaviour
     { //HARD RESET
         isAllowed = false;
         StopAllCoroutines();
+        swordObject.SetActive(false);
+        anim.SetBool("isAttacking1", false);
+        anim.SetBool("isAttacking2", false);
+        anim.SetBool("isChargingAttack2", false);
+        swordAnim.SetBool("isAttacking1", false);
+        swordAnim.SetBool("isAttacking2", false);
+        swordAnim.SetBool("isChargingAttack2", false);
         sword1.SetActive(false);
         sword2.SetActive(false);
         minCharge = false;
@@ -65,7 +78,7 @@ public class PlayerControl : MonoBehaviour
     void Move()
     {
         Xmovement = Input.GetAxisRaw("Horizontal") * Xvelocity;
-        Ymovement = Input.GetAxisRaw("Vertical") * Yvelocity; 
+        Ymovement = Input.GetAxisRaw("Vertical") * Yvelocity;
 
         rb2d.velocity = new Vector2(Xmovement, Ymovement);
         
@@ -84,6 +97,9 @@ public class PlayerControl : MonoBehaviour
         {
             if (currentAttack == Attacks.NotAttacking)
             {
+                swordObject.SetActive(true);
+                anim.SetBool("isChargingAttack2", true);
+                swordAnim.SetBool("isChargingAttack2", true);
                 triedToRelease = false;
                 minCharge = false;
                 currentAttack = Attacks.Attack2Charge;
@@ -99,11 +115,17 @@ public class PlayerControl : MonoBehaviour
 
     IEnumerator Attack1()
     {
+        swordObject.SetActive(true);
+        anim.SetBool("isAttacking1", true);
+        swordAnim.SetBool("isAttacking1", true);
         sword1.SetActive(true);
         currentAttack = Attacks.Attack1;
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.15f);
         sword1.SetActive(false);
-        currentAttack = Attacks.NotAttacking;
+        StartCoroutine(AttackCooldown());
+        anim.SetBool("isAttacking1", false);
+        swordAnim.SetBool("isAttacking1", false);
+        swordObject.SetActive(false);
     }
 
     IEnumerator ReleaseAttack2timer()
@@ -125,6 +147,8 @@ public class PlayerControl : MonoBehaviour
 
     void ReleaseAttack2()
     {
+        anim.SetBool("isChargingAttack2", false);
+        swordAnim.SetBool("isChargingAttack2", false);
         if (currentAttack == Attacks.Attack2Charge && minCharge == true)
         {
            
@@ -134,9 +158,36 @@ public class PlayerControl : MonoBehaviour
 
     IEnumerator Attack2()
     {
+        anim.SetBool("isAttacking2", true);
+        swordAnim.SetBool("isAttacking2", true);
         sword2.SetActive(true);
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.15f);
         sword2.SetActive(false);
+        StartCoroutine(AttackCooldown());
+        anim.SetBool("isAttacking2", false);
+        swordAnim.SetBool("isAttacking2", false);
+        swordObject.SetActive(false);
+    }
+
+    void Strike1() //CHAMADO POR SENDMESSAGE DA ATTACKMARK
+    {
+        StartCoroutine(StrikeAnim());
+    }
+
+    IEnumerator StrikeAnim()
+    {
+        swordObject.SetActive(true);
+        anim.SetBool("isAttacking1", true);
+        swordAnim.SetBool("isAttacking1", true);
+        yield return new WaitForSeconds(0.15f);
+        anim.SetBool("isAttacking1", false);
+        swordAnim.SetBool("isAttacking1", false);
+        swordObject.SetActive(false);
+    }
+
+    IEnumerator AttackCooldown()
+    {
+        yield return new WaitForSeconds(attackCooldown);
         currentAttack = Attacks.NotAttacking;
     }
 }
