@@ -30,6 +30,8 @@ public class BossHealth : MonoBehaviour
         if (bossHealth <= 0)
         {
             bossHealth = 0;
+            healthBar.GetComponent<Slider>().value = bossHealth / maxHealth;
+            healthUI.text = Mathf.Round(bossHealth).ToString();
             StartCoroutine(waitToWin());
         }
         healthUI.text = Mathf.Round(bossHealth).ToString();
@@ -41,7 +43,7 @@ public class BossHealth : MonoBehaviour
         Destroy(player.GetComponent<PlayerAttack>());
         Destroy(player.GetComponent<PlayerControl>());
 
-        gameObject.SendMessage("SelfStop"); //O SCRIPT DO BOSS DE AUTODESTRUIR-SE AO RECEBER ISTO
+        gameObject.SendMessage("SelfStop", SendMessageOptions.DontRequireReceiver); //O SCRIPT DO BOSS DE AUTODESTRUIR-SE AO RECEBER ISTO
 
         yield return new WaitForSeconds(5);
         SceneManager.LoadScene("MainMenu");

@@ -16,6 +16,24 @@ public class BackgroundMusic : MonoBehaviour //cortesia do chatgpt (nao é que is
     // Time to wait before restarting the song (in seconds)
     public float restartDelay = 3.0f;
 
+    private float volume;
+
+    public static BackgroundMusic instance;
+
+    void Awake()
+    {
+        // Implement Singleton pattern to ensure only one instance exists
+        if (instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);  // Prevent destruction on scene load
+        }
+        else if (instance != this)
+        {
+            Destroy(gameObject);  // Destroy any additional instances
+            return;  // Prevent further execution
+        }
+    }
     void Start()
     {
         // Prevent this object from being destroyed on scene load
@@ -30,6 +48,14 @@ public class BackgroundMusic : MonoBehaviour //cortesia do chatgpt (nao é que is
         }
 
         PlayAudioById(0);
+
+        volume = PlayerPrefs.GetInt("Volume", 100) / 100;
+        SetVolume(volume);
+
+        if (PlayerPrefs.GetInt("Muted", 0) == 1)
+        {
+            Mute();
+        }
     }
 
     void Update()
@@ -105,10 +131,27 @@ public class BackgroundMusic : MonoBehaviour //cortesia do chatgpt (nao é que is
     }
 
     // Change the volume of the audio source (0.0 to 1.0)
-    public void SetVolume(float volume)
+    public void SetVolume(float volumeIn)
     {
-        volume = Mathf.Clamp(volume, 0f, 1f);
+        volume = Mathf.Clamp(volumeIn, 0f, 1f);
+        PlayerPrefs.SetInt("Volume", (int)(volume * 100));
+        if (PlayerPrefs.GetInt("Muted", 0) == 0)
+        {
+            audioSource.volume = volume;
+        }
+        
+    }
+
+    public void Mute()
+    {
+        audioSource.volume = 0;
+        PlayerPrefs.SetInt("Muted", 1);
+    }
+
+    public void UnMute()
+    {
         audioSource.volume = volume;
+        PlayerPrefs.SetInt("Muted", 0);
     }
 
     // Get the current volume level
