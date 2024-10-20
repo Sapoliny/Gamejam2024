@@ -10,13 +10,14 @@ GameObject:
   m_Component:
   - component: {fileID: 8046108158070201397}
   - component: {fileID: 5490938811349284631}
+  - component: {fileID: 3907629200732224017}
   m_Layer: 0
   m_Name: Sword 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8046108158070201397
 Transform:
   m_ObjectHideFlags: 0
@@ -67,6 +68,18 @@ CapsuleCollider2D:
   m_Offset: {x: 0.09711254, y: -0.050000012}
   m_Size: {x: 0.33173195, y: 0.41466492}
   m_Direction: 0
+--- !u!114 &3907629200732224017
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1504285961836056174}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a078100e00009a4bad318f60d601c7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1607434850522637234
 GameObject:
   m_ObjectHideFlags: 0
@@ -77,6 +90,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3548944117002510703}
   - component: {fileID: 7854546790859717393}
+  - component: {fileID: 5863464271217562698}
   m_Layer: 0
   m_Name: Sword 2
   m_TagString: Untagged
@@ -134,6 +148,18 @@ CapsuleCollider2D:
   m_Offset: {x: 0.19031505, y: -0.05}
   m_Size: {x: 0.38401285, y: 0.14705376}
   m_Direction: 1
+--- !u!114 &5863464271217562698
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1607434850522637234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4a907140af656f41bafe4b63443042d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8203816835433312324
 GameObject:
   m_ObjectHideFlags: 0

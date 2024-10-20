@@ -22,6 +22,7 @@ public class Boss2 : MonoBehaviour
     public float movementSpeed;
 
     public float swipeDamage;
+    public float rotationSpeed;
 
 
     bool waitingToEnd = false;
@@ -41,13 +42,13 @@ public class Boss2 : MonoBehaviour
 
     void StartAttackState() //CHAMADO POR UM SENDMESSAGE DO GAMEMANAGER
     {
-        int choice = UnityEngine.Random.Range(1, 2 + 1);
+        int choice = UnityEngine.Random.Range(0, 2);
         switch (choice)
         {
-            case 1:
-                StartCoroutine(attack1());
+            case 0:
+                StartCoroutine(attack1());  
                 break;
-            case 2:
+            case 1:
                 StartCoroutine(attack2());
                 break;
             default:
@@ -77,6 +78,7 @@ public class Boss2 : MonoBehaviour
         {
             Destroy(shooters[i]);
         }
+        yield return new WaitForSeconds(2);
         shooters.Clear();
         waitingToEnd = true;
     }
@@ -84,7 +86,7 @@ public class Boss2 : MonoBehaviour
         IEnumerator attack2()
         {
             while (true)
-            {
+            {   
                 this.transform.position = Vector2.MoveTowards(this.transform.position, exitScreen.position, movementSpeedExit * Time.deltaTime);
                 if (Vector2.Distance(this.transform.position, exitScreen.position) < 0.1f)
                 {
@@ -136,8 +138,10 @@ public class Boss2 : MonoBehaviour
     bool MovePos(Vector3 target, float moveSpeed)
     {
         this.transform.position =  Vector2.MoveTowards(this.transform.position, target, moveSpeed);
+        this.transform.Rotate(new Vector3(0,0, rotationSpeed * Time.deltaTime));
         if (Vector2.Distance(this.transform.position, target) < 0.1f)
-        {
+        {       
+            this.transform.rotation = Quaternion.identity;
             return false;
         }
         return true;

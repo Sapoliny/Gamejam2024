@@ -32,18 +32,14 @@ public class PlayerHealth : MonoBehaviour
     public void getHurt(float damage) 
     {
         playerHealth -= damage;
-        healthBar.GetComponent<Slider>().value = playerHealth / maxHealth;
-        healthUI.text = playerHealth.ToString();
-
-        GameObject indicator = Instantiate(playerDamageIndicator);
-        indicator.GetComponent<DamageIndicator>().Show(damage,transform);
-
         if (playerHealth <= 0)
         {
             playerHealth = 0;
             StartCoroutine(waitToDie());
             GetComponent<Animator>().SetBool("isDead", true);
         }
+        healthBar.GetComponent<Slider>().value = playerHealth / maxHealth;
+        healthUI.text = playerHealth.ToString(); 
         
     }
 
