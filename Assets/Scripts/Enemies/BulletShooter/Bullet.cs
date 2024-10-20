@@ -28,6 +28,7 @@ public class Bullet : MonoBehaviour
     public bool goToBoss;
 
     private Transform bossTransform;
+    public GameObject indicator;
 
     private Rigidbody2D rb2D;
     // Start is called before the first frame update
@@ -56,7 +57,9 @@ public class Bullet : MonoBehaviour
         }
         else if (coll.gameObject.tag == "Boss")
         {
-            coll.gameObject.GetComponent<BossHealth>().getHurt(damage/5);
+            coll.gameObject.GetComponent<BossHealth>().getHurt(damage);
+            GameObject e = Instantiate(indicator);
+            e.GetComponent<DamageIndicator>().Show(damage, this.transform);
             Destroy(this.gameObject);
         }
     }

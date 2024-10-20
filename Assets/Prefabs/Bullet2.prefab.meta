@@ -1,4 +1,12 @@
 fileFormatVersion: 2
+<<<<<<< Updated upstream
+=======
+<<<<<<<< HEAD:Assets/Prefabs/DamageIndicators.meta
+guid: 5a13374b606904ba2b7eec52596e75e8
+folderAsset: yes
+DefaultImporter:
+========
+>>>>>>> Stashed changes
 guid: 84d369303a178ce78a28e9b2b34ed971
 PrefabImporter:
   externalObjects: {}
