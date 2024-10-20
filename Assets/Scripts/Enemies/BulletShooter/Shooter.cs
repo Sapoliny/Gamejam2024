@@ -31,6 +31,9 @@ public class Shooter : MonoBehaviour
             canShoot = false;
             StartCoroutine(shootTiming(fireRate));
         }
+
+        Vector2 dir = playerTransform.position - this.transform.position;
+        transform.right = dir * -1;
     }
 
     void Shoot()
@@ -49,6 +52,7 @@ public class Shooter : MonoBehaviour
         direction.Normalize();
 
         Rigidbody2D rb2d = bullet.GetComponent<Rigidbody2D>();
+        bullet.GetComponent<Bullet>().speed = bulletSpeed;
         rb2d.velocity = direction * bulletSpeed;
     }
 

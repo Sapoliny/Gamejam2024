@@ -40,12 +40,6 @@ public class PlayerHealth : MonoBehaviour
         DamageSound();
 
         playerHealth -= damage;
-        healthBar.GetComponent<Slider>().value = playerHealth / maxHealth;
-        healthUI.text = playerHealth.ToString();
-
-        GameObject indicator = Instantiate(playerDamageIndicator);
-        indicator.GetComponent<DamageIndicator>().Show(damage,transform);
-
         if (playerHealth <= 0)
         {
             playerHealth = 0;
@@ -54,6 +48,8 @@ public class PlayerHealth : MonoBehaviour
             StartCoroutine(waitToDie());
             GetComponent<Animator>().SetBool("isDead", true);
         }
+        healthBar.GetComponent<Slider>().value = playerHealth / maxHealth;
+        healthUI.text = playerHealth.ToString(); 
         
     }
 

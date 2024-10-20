@@ -27,7 +27,6 @@ public class BossHealth : MonoBehaviour
     {
         bossHealth -= damage;
         healthBar.GetComponent<Slider>().value = bossHealth / maxHealth;
-        healthUI.text = Mathf.Round(bossHealth).ToString();
         if (bossHealth <= 0)
         {
             bossHealth = 0;
@@ -35,7 +34,7 @@ public class BossHealth : MonoBehaviour
             healthUI.text = Mathf.Round(bossHealth).ToString();
             StartCoroutine(waitToWin());
         }
-
+        healthUI.text = Mathf.Round(bossHealth).ToString();
     }
 
     IEnumerator waitToWin()
