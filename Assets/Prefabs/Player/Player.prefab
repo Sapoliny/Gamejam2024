@@ -64,8 +64,8 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.07560656, y: -0.049999997}
-  m_Size: {x: 0.28871998, y: 0.36089998}
+  m_Offset: {x: 0.09711254, y: -0.050000012}
+  m_Size: {x: 0.33173195, y: 0.41466492}
   m_Direction: 0
 --- !u!1 &1607434850522637234
 GameObject:
@@ -287,6 +287,7 @@ MonoBehaviour:
   healthBar: {fileID: 0}
   healthUI: {fileID: 0}
   gameOver: {fileID: 0}
+  playerDamageIndicator: {fileID: 3152109958451332769, guid: 631cd3ce5429493408e26a75fb221b4e, type: 3}
   playerHealth: 0
 --- !u!114 &3373494652447073875
 MonoBehaviour:
@@ -339,7 +340,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.000065512955, y: -0.069183975}
+  m_Offset: {x: 0.0008694902, y: -0.069183975}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -350,7 +351,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.24100207, y: 0.35906744}
+  m_Size: {x: 0.20921068, y: 0.35906744}
   m_EdgeRadius: 0
 --- !u!95 &5432459151208817873
 Animator:

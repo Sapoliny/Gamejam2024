@@ -11,6 +11,7 @@ public class PlayerHealth : MonoBehaviour
     public GameObject healthBar;
     public TextMeshProUGUI healthUI;
     public GameObject gameOver;
+    public GameObject playerDamageIndicator;
 
     [Header("nao mexer")]
     public float playerHealth;
@@ -32,7 +33,11 @@ public class PlayerHealth : MonoBehaviour
     {
         playerHealth -= damage;
         healthBar.GetComponent<Slider>().value = playerHealth / maxHealth;
-        healthUI.text = playerHealth.ToString(); 
+        healthUI.text = playerHealth.ToString();
+
+        GameObject indicator = Instantiate(playerDamageIndicator);
+        indicator.GetComponent<DamageIndicator>().Show(damage,transform);
+
         if (playerHealth <= 0)
         {
             playerHealth = 0;
