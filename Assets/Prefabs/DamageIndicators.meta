@@ -1,7 +1,12 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Prefabs/DamageIndicators.meta
 guid: ff54981332ddab54cb0aa15a8713d897
 folderAsset: yes
 DefaultImporter:
+========
+guid: 84d369303a178ce78a28e9b2b34ed971
+PrefabImporter:
+>>>>>>>> 109f971 (out 20 13:48):Assets/Prefabs/Bullet2.prefab.meta
   externalObjects: {}
   userData: 
   assetBundleName: 
