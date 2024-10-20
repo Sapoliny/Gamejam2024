@@ -9,12 +9,13 @@ public class BossHealth : MonoBehaviour
 {
     public float maxHealth;
     public GameObject healthBar;
+    public GameObject player;
+    public GameObject gameWin;
     public TextMeshProUGUI healthUI;
 
     [Header("nao mexer")]
     public float bossHealth;
 
-    bool isDead;
 
     // Start is called before the first frame update
     void Start()
@@ -30,9 +31,21 @@ public class BossHealth : MonoBehaviour
         if (bossHealth <= 0)
         {
             bossHealth = 0;
-            isDead = true;
-            //SceneManager.LoadScene("xD");
+            StartCoroutine(waitToWin());
         }
 
     }
+
+    IEnumerator waitToWin()
+    {
+        gameWin.SetActive(true);
+        Destroy(player.GetComponent<PlayerAttack>());
+        Destroy(player.GetComponent<PlayerControl>());
+
+        gameObject.SendMessage("SelfStop"); //O SCRIPT DO BOSS DE AUTODESTRUIR-SE AO RECEBER ISTO
+
+        yield return new WaitForSeconds(5);
+        SceneManager.LoadScene("MainMenu");
+    }
 }
+
