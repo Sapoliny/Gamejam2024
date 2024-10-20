@@ -1,8 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditor;
-using UnityEditor.Callbacks;
 using UnityEngine;
 
 public enum attackDeflected
@@ -30,12 +25,16 @@ public class Bullet : MonoBehaviour
     private Transform bossTransform;
     public GameObject indicator;
 
+    public AudioClip bulletBlockSound;
+    AudioSource audioSource;
+
     private Rigidbody2D rb2D;
     // Start is called before the first frame update
     void Start()
     {
         rb2D = this.gameObject.GetComponent<Rigidbody2D>();
         bossTransform = GameObject.FindGameObjectWithTag("Boss").GetComponent<Transform>();
+        audioSource = GameObject.Find("BackgroundMusic").GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -71,6 +70,7 @@ public class Bullet : MonoBehaviour
         {
             return;
         }
+        audioSource.PlayOneShot(bulletBlockSound);
         if (goToBoss)
         {
             Vector2 direction = bossTransform.position - this.transform.position;
@@ -84,6 +84,7 @@ public class Bullet : MonoBehaviour
         }
         else
         {
+            
             Vector2 direction = new Vector2(rb2D.velocity.x * -1, rb2D.velocity.y);
             float angle = Vector2.Angle(rb2D.velocity, direction) / 2;
             if (direction.y > 0)

@@ -49,7 +49,7 @@ public class BackgroundMusic : MonoBehaviour //cortesia do chatgpt (nao é que is
 
         PlayAudioById(0);
 
-        volume = PlayerPrefs.GetInt("Volume", 100) / 100;
+        volume = PlayerPrefs.GetInt("Volume", 100) / 100f;
         SetVolume(volume);
 
         if (PlayerPrefs.GetInt("Muted", 0) == 1)
@@ -133,8 +133,8 @@ public class BackgroundMusic : MonoBehaviour //cortesia do chatgpt (nao é que is
     // Change the volume of the audio source (0.0 to 1.0)
     public void SetVolume(float volumeIn)
     {
-        volume = Mathf.Clamp(volumeIn, 0f, 1f);
-        PlayerPrefs.SetInt("Volume", (int)(volume * 100));
+        volume = volumeIn;
+        PlayerPrefs.SetInt("Volume", (int)(volumeIn * 100f));
         if (PlayerPrefs.GetInt("Muted", 0) == 0)
         {
             audioSource.volume = volume;

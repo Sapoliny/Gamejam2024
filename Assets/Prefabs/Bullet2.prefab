@@ -105,6 +105,7 @@ MonoBehaviour:
   attackToDeflected: 0
   goToBoss: 1
   indicator: {fileID: 3152109958451332769, guid: 581828f184dc51b48a63f50307a85d29, type: 3}
+  bulletBlockSound: {fileID: 8300000, guid: e245746f1714efefeaf3a666abf75f80, type: 3}
 --- !u!50 &289047963073919082
 Rigidbody2D:
   serializedVersion: 4

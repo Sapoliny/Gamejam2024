@@ -100,9 +100,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 5
+  speed: 0
   bulletTime: 999
   attackToDeflected: 1
-  bossTransform: {fileID: 0}
+  goToBoss: 0
+  indicator: {fileID: 0}
+  bulletBlockSound: {fileID: 8300000, guid: e245746f1714efefeaf3a666abf75f80, type: 3}
 --- !u!50 &289047963073919082
 Rigidbody2D:
   serializedVersion: 4
